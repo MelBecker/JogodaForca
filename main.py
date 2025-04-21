@@ -1,13 +1,15 @@
 import random
 from cores import Style, Colors
 from temas import TEMAS
+from consts import HEADER
 
 def mensagem_bemvindo():
+    print(Colors.MAGENTA + HEADER)    
     print(Style.BOLD + Colors.RED + "Bem-vindo ao Jogo da Forca!" + Style.RESET)
 
 def iniciacao_jogo():
     while True:
-        iniciar = input(Style.HEADER + "Deseja jogar(s/n)? ")
+        iniciar = input(Style.HEADER + Colors.WHITE + "Deseja jogar(s/n)? ")
         iniciar = iniciar.lower()
         if iniciar == "s":
             return True
@@ -28,6 +30,10 @@ def selecione_temas():
                 tema = temas[indice_tema - 1]
                 return tema
 
+def selecione_palavra_aleatoria(tema): 
+    random_number = random.randint(0, len(TEMAS[tema]) - 1)
+    return TEMAS[tema][random_number]
+
 if __name__ == "__main__":
     mensagem_bemvindo()
     jogar = iniciacao_jogo()
@@ -35,4 +41,5 @@ if __name__ == "__main__":
         exit()
     tema = selecione_temas()
     random_number = random.randint(0, len(TEMAS[tema]) - 1)
-    print(TEMAS[tema][random_number])
+    palavra_aleatoria = selecione_palavra_aleatoria(tema)
+    print(palavra_aleatoria)

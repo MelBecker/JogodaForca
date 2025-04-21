@@ -1,0 +1,8 @@
+1. git status
+2. git add (nome do arquivo que deseja salvar)
+    ex: git add consts.py
+    (repetir isso para todos os arquivos que quer salvar)
+3. git commit -m "mensagem das alterações" (salvando todas as alterações)
+    ex: git commit -m "feat: novo botão de compra"
+    ex: git commit -m "fix: erro buscar palavra aleatoria"
+4. git push (subir alterações do local para o github)
