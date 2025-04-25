@@ -2,6 +2,7 @@ import random
 from cores import Style, Colors
 from temas import TEMAS
 from consts import HEADER
+from forca import boneco_forca
 
 def mensagem_bemvindo():
     print(Colors.MAGENTA + HEADER)    
@@ -43,3 +44,4 @@ if __name__ == "__main__":
     random_number = random.randint(0, len(TEMAS[tema]) - 1)
     palavra_aleatoria = selecione_palavra_aleatoria(tema)
     print(palavra_aleatoria)
+    boneco_forca(palavra_aleatoria)
