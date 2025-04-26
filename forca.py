@@ -1,59 +1,58 @@
+from cores import Colors, Style
 
 def boneco_forca(palavra_aleatoria):
     palavra = palavra_aleatoria
     quantidade_letras = len(palavra)
-    erros = 0
+    nova_palavra = palavra.replace(" ", "-")
+    erro = 0
     perdeu = 6
 
-    letra = input("\nEscolha uma letra: ")
-    letra = letra.lower()
-
-    if erros == 0:
-        print("__________")
+    if erro == 0:
+        print(Style.BOLD + Colors.BLUE + "________________")
+        print(Colors.GREEN + "|")
         print("|")
         print("|")
         print("|")
-        print("|")
-        print("| ", quantidade_letras * "_ ")
-    elif erros == 1:
-        print("__________")
-        print("|         O")
-        print("|")
+        print("| ", Colors.BLACK + quantidade_letras * "_ ")
+    elif erro == 1:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
         print("|")
         print("|")
-        print("| ", quantidade_letras * "_ ")
-    elif erros == 2:
-        print("__________")
-        print("|         O")
-        print("|         |")
+        print("|")
+        print("| ", Colors.BLACK + quantidade_letras * "_ ")
+    elif erro == 2:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
+        print("|              |")
         print("|")
         print("|")
-        print("| ", quantidade_letras * "_ ")
-    elif erros == 3:
-        print("__________")
-        print("|         O")
-        print("|        /|")
+        print("| ", Colors.BLACK + quantidade_letras * "_ ")
+    elif erro == 3:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
+        print("|             /|")
         print("|")
         print("|")
-        print("| ", quantidade_letras * "_ ")
-    elif erros == 4:
-        print("__________")
-        print("|         O")
-        print("|        /|\\")
+        print("| ", Colors.BLACK + quantidade_letras * "_ ")
+    elif erro == 4:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
+        print("|             /|\\")
         print("|")
         print("|")
-        print("| _ _ _ _ _ _")
-    elif erros == 5:
-        print("__________")
-        print("|         O")
-        print("|        /|\\")
-        print("|        /")
+        print("| ", Colors.BLACK + quantidade_letras * "_ ")
+    elif erro == 5:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
+        print("|             /|\\")
+        print("|             /")
+        print("|") 
+        print("| ", Colors.BLACK + quantidade_letras * "_ ")
+    elif erro == perdeu:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
+        print("|             /|\\")
+        print("|             / \\")
         print("|")
-        print("| ", quantidade_letras * "_ ")
-    elif erros == perdeu:
-        print("__________")
-        print("|         O")
-        print("|        /|\\")
-        print("|        / \\")
-        print("|")
-        print("| ", quantidade_letras * "_ ")
+        print("| ", Colors.BLACK + quantidade_letras * "_ ")

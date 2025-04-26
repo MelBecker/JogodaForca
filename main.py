@@ -35,6 +35,16 @@ def selecione_palavra_aleatoria(tema):
     random_number = random.randint(0, len(TEMAS[tema]) - 1)
     return TEMAS[tema][random_number]
 
+def selecione_letra():
+    letra = input(Style.RESET + Colors.WHITE + "\nEscolha uma letra: ")
+    letra = letra.lower()
+    
+    while True:
+        if letra in palavra_aleatoria:
+            posicao = palavra_aleatoria.find(letra)
+        elif letra not in palavra_aleatoria:
+            return 
+
 if __name__ == "__main__":
     mensagem_bemvindo()
     jogar = iniciacao_jogo()
@@ -45,3 +55,4 @@ if __name__ == "__main__":
     palavra_aleatoria = selecione_palavra_aleatoria(tema)
     print(palavra_aleatoria)
     boneco_forca(palavra_aleatoria)
+    selecione_letra()
