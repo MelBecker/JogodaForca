@@ -1,8 +1,11 @@
 import random
+import re
 from cores import Style, Colors
 from temas import TEMAS
-from consts import HEADER
-from forca import boneco_forca
+from consts import HEADER, MAX_ERROS
+
+g_erro = 0
+g_palpite = ""
 
 def mensagem_bemvindo():
     print(Colors.MAGENTA + HEADER)    
@@ -41,9 +44,64 @@ def selecione_letra():
     
     while True:
         if letra in palavra_aleatoria:
-            posicao = palavra_aleatoria.find(letra)
+            indices = [match.start() for match in re.finditer(letra, palavra_aleatoria)]
+            print(indices)
+            return indices
         elif letra not in palavra_aleatoria:
             return 
+
+def boneco_forca(tamanho_palavra_aleatoria):
+
+    if g_erro == 0:
+        print(Style.BOLD + Colors.BLUE + "________________")
+        print(Colors.GREEN + "|")
+        print("|")
+        print("|")
+        print("|")
+        print("| ", Colors.BLACK + tamanho_palavra_aleatoria * "_ ")
+    elif g_erro == 1:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
+        print("|")
+        print("|")
+        print("|")
+        print("| ", Colors.BLACK + tamanho_palavra_aleatoria * "_ ")
+    elif g_erro == 2:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
+        print("|              |")
+        print("|")
+        print("|")
+        print("| ", Colors.BLACK + tamanho_palavra_aleatoria * "_ ")
+    elif g_erro == 3:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
+        print("|             /|")
+        print("|")
+        print("|")
+        print("| ", Colors.BLACK + tamanho_palavra_aleatoria * "_ ")
+    elif g_erro == 4:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
+        print("|             /|\\")
+        print("|")
+        print("|")
+        print("| ", Colors.BLACK + tamanho_palavra_aleatoria * "_ ")
+    elif g_erro == 5:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
+        print("|             /|\\")
+        print("|             /")
+        print("|") 
+        print("| ", Colors.BLACK + tamanho_palavra_aleatoria * "_ ")
+    elif g_erro == MAX_ERROS:
+        print(Colors.BLUE + "________________")
+        print(Colors.GREEN + "|              O")
+        print("|             /|\\")
+        print("|             / \\")
+        print("|")
+        print("| ", Colors.BLACK + tamanho_palavra_aleatoria * "_ ")
+
 
 if __name__ == "__main__":
     mensagem_bemvindo()
@@ -54,5 +112,8 @@ if __name__ == "__main__":
     random_number = random.randint(0, len(TEMAS[tema]) - 1)
     palavra_aleatoria = selecione_palavra_aleatoria(tema)
     print(palavra_aleatoria)
-    boneco_forca(palavra_aleatoria)
-    selecione_letra()
+    g_palpite = len(palavra_aleatoria) * "_ "
+    print(g_palpite)
+    while (True):
+        boneco_forca(len(palavra_aleatoria))
+        selecione_letra()
