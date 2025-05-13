@@ -48,7 +48,8 @@ def selecione_letra():
             print(indices)
             return indices
         elif letra not in palavra_aleatoria:
-            return 
+            return
+        
 
 def boneco_forca(tamanho_palavra_aleatoria):
 
@@ -103,6 +104,7 @@ def boneco_forca(tamanho_palavra_aleatoria):
         print("| ", Colors.BLACK + tamanho_palavra_aleatoria * "_ ")
 
 
+
 if __name__ == "__main__":
     mensagem_bemvindo()
     jogar = iniciacao_jogo()
@@ -113,7 +115,7 @@ if __name__ == "__main__":
     palavra_aleatoria = selecione_palavra_aleatoria(tema)
     print(palavra_aleatoria)
     g_palpite = len(palavra_aleatoria) * "_ "
-    print(g_palpite)
+    espacos_palavra = palavra_aleatoria.replace(" ", "-")
     while (True):
         boneco_forca(len(palavra_aleatoria))
         selecione_letra()
